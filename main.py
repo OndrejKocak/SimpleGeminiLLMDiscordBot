@@ -16,8 +16,10 @@ class Config:
     #load target_id
     def getTargetChannelId(self):
         return self.parser['target_channel_id']
+    #load mentions option
     def getMentions(self):
         return self.parser['mentions']
+    #load after message
     def getAfterMessage(self):
         return self.parser['after_message']
     
@@ -29,7 +31,6 @@ class Client(discord.Client):
         self.config = config
         self.chat = chat 
     
-
     async def on_ready(self):
         print(f'Logged in as {self.user}')
 
@@ -43,8 +44,6 @@ class Client(discord.Client):
         if isinstance(message.channel, discord.DMChannel) or message.channel.id == self.config.getTargetChannelId():
             await message.channel.send(self.chat.send_message(message.content.lower()).text)   
         
-
-
 def main():
     config = Config()
     print(config.getAfterMessage())
@@ -53,6 +52,5 @@ def main():
     client = Client(config, chat)
     client.run(config.getDiscordToken())
    
-
 if __name__ == "__main__":
     main()
