@@ -1,1 +1,5 @@
-google_api_secret: YOUR_API_KEY_HERE
+google_api_secret: YOUR_GOOGLE_AI_SECRET
+discord_token: YOUR_DISCORD_BOT_SECRET_TOKEN
+target_channel_id: CHANNEL_ID
+after_message: "respond in 5 sentences"
+mentions: true
