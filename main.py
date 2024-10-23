@@ -19,9 +19,6 @@ class Config:
     #load mentions option
     def getMentions(self):
         return self.parser['mentions']
-    #load after message
-    def getAfterMessage(self):
-        return self.parser['after_message']
     
 class Client(discord.Client):
     def __init__(self, config, chat, *args, **kwargs):
@@ -39,14 +36,13 @@ class Client(discord.Client):
             return
         #short response on ping
         if (self.config.getMentions() and self.user.mentioned_in(message)):
-            await message.channel.send(self.chat.send_message(message.content.lower()).text+self.config.getAfterMessage())
+            await message.channel.send(self.chat.send_message(message.content.lower(), generation_config = genai.types.GenerationConfig(candidate_count = 1,max_output_tokens = 100, top_p = 0.6, top_k = 5, temperature = 0.6)).text)
         #long response in channel and DMs
-        if isinstance(message.channel, discord.DMChannel) or message.channel.id == self.config.getTargetChannelId():
-            await message.channel.send(self.chat.send_message(message.content.lower()).text)   
+        if (isinstance(message.channel, discord.DMChannel) or message.channel.id == self.config.getTargetChannelId()) and not self.user.mentioned_in(message):
+            await message.channel.send(self.chat.send_message(message.content.lower(), generation_config= genai.types.GenerationConfig()).text)   
         
 def main():
     config = Config()
-    print(config.getAfterMessage())
     genai.configure(api_key = config.getGoogleAPISecret())
     chat = genai.GenerativeModel('gemini-pro').start_chat(history=[])
     client = Client(config, chat)
