@@ -1,4 +1,0 @@
-google_api_secret: YOUR_GOOGLE_AI_SECRET
-discord_token: YOUR_DISCORD_BOT_SECRET_TOKEN
-target_channel_id: CHANNEL_ID
-mentions: true
