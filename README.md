@@ -3,14 +3,14 @@
 **SimpleGeminiLLMDiscordBot** is a lightweight Discord bot written in Python. It leverages a Gemini Large Language Model (LLM) to enable intelligent interactions with users on a Discord server.
 
 ## Features
-- Provides AI-driven responses using LLM.
+- Provides AI-driven responses using Gemini LLM.
 - Easy setup and configuration.
 - Extensible to include custom functionality.
 
 ## Requirements
 - Python 3.8 or later
 - A Discord account and bot token
-- OpenAI API key (or an equivalent LLM API key)
+- GOOGLE API key
 
 ## Installation
 1. Clone this repository:
