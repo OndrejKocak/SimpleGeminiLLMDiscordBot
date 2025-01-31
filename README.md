@@ -29,7 +29,17 @@
    ```bash
    python main.py
    ```
-
+   
+## Docker Deployment:
+1. Build the Docker image:
+   ```bash
+   docker build -t simple-gemini-bot .
+   ```
+2. Run the container:
+   ```bash
+   docker run -d simple-gemini-bot
+   ```
+   
 ## Usage
 - Add the bot to your Discord server using the bot's URL from the [Discord Developer Portal](https://discord.com/developers).
 - Create channel reserved for chat with bot (optional)
